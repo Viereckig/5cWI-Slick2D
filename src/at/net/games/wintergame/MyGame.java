@@ -5,8 +5,13 @@ import org.newdawn.slick.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static at.net.games.wintergame.AllEnums.direction.LEFT;
+import static at.net.games.wintergame.AllEnums.direction.RIGHT;
+import static at.net.games.wintergame.AllEnums.direction.DOWN;
+import static at.net.games.wintergame.AllEnums.direction.UP;
+
 public class MyGame extends BasicGame{
-    private List<CircleActor> circles = new ArrayList();
+    private List<Actor> actors = new ArrayList();
 
     public MyGame(String title) {
         super(title);
@@ -14,21 +19,26 @@ public class MyGame extends BasicGame{
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-        circles.add(new CircleActor(0,100));
-        circles.add(new CircleActor(0,300));
+        actors.add(new CircleActor(0,100));
+        actors.add(new CircleActor(0,300));
+        actors.add(new OvalActor(500,500, LEFT));
+        actors.add(new OvalActor(500,500, RIGHT));
+        actors.add(new RectActor(500,0, DOWN));
+
+
     }
 
     @Override
     public void update(GameContainer gc, int delta) throws SlickException {
-        for (CircleActor circle : this.circles) {
-            circle.update(gc,delta);
+        for (Actor actor : this.actors) {
+            actor.update(gc,delta);
         }
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        for (CircleActor circle : this.circles) {
-            circle.render(graphics);
+        for (Actor actor : this.actors) {
+            actor.render(graphics);
         }
     }
 
