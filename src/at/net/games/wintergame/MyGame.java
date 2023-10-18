@@ -1,29 +1,35 @@
 package at.net.games.wintergame;
 
 import org.newdawn.slick.*;
-import org.newdawn.slick.tests.AnimationTest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyGame extends BasicGame{
-    private int x,y;
+    private List<CircleActor> circles = new ArrayList();
+
     public MyGame(String title) {
         super(title);
     }
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-        System.out.println("init");
-        this.x = 100;
-        this.y = 100;
+        circles.add(new CircleActor(0,100));
+        circles.add(new CircleActor(0,300));
     }
 
     @Override
-    public void update(GameContainer gameContainer, int i) throws SlickException {
-        this.x++;
+    public void update(GameContainer gc, int delta) throws SlickException {
+        for (CircleActor circle : this.circles) {
+            circle.update(gc,delta);
+        }
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        graphics.drawRect(this.x,this.y,50,50);
+        for (CircleActor circle : this.circles) {
+            circle.render(graphics);
+        }
     }
 
     public static void main(String[] args) {
