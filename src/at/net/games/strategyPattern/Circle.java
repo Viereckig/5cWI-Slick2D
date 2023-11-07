@@ -6,18 +6,10 @@ import org.newdawn.slick.*;
 
 
 
-public class Circle implements Actor{
-
-    private MoveStrategy moveStrategy;
+public class Circle extends AbstractActor{
 
     public Circle(MoveStrategy moveStrategy) {
-        super();
-        this.moveStrategy = moveStrategy;
-    }
-
-    @Override
-    public void update(GameContainer gc, int delta) {
-        this.moveStrategy.update(delta);
+        super(moveStrategy);
     }
 
     @Override
