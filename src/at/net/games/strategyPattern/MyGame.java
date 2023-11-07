@@ -1,35 +1,36 @@
-package at.net.games.wintergame;
+package at.net.games.strategyPattern;
 
+import at.net.games.strategyPattern.move.MoveLeft;
+import at.net.games.strategyPattern.move.MoveRight;
+import at.net.games.strategyPattern.move.MoveStrategy;
 import org.newdawn.slick.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import static at.net.games.wintergame.AllEnums.direction.LEFT;
-import static at.net.games.wintergame.AllEnums.direction.RIGHT;
-import static at.net.games.wintergame.AllEnums.direction.DOWN;
-import static at.net.games.wintergame.AllEnums.direction.UP;
-
-public class MyGame extends BasicGame{
-    private List<Actor> actors = new ArrayList();
-
+public class MyGame extends BasicGame {
+    private ArrayList<Actor> actors;
     public MyGame(String title) {
         super(title);
     }
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-        actors.add(new CircleActor(0,100));
-        actors.add(new CircleActor(0,300));
-        actors.add(new OvalActor(500,500, LEFT));
-        actors.add(new OvalActor(500,500, RIGHT));
-        actors.add(new RectActor(500,0, DOWN));
+        this.actors = new ArrayList<>();
+
+        MoveStrategy ms1 = new MoveRight(0,0,0.3f);
+        MoveStrategy ms2 = new MoveLeft(300,0,0.1f);
+
+        Circle c1 = new Circle(ms1);
+        Circle c2 = new Circle(ms2);
+
+        this.actors.add(c1);
+        this.actors.add(c2);
     }
 
     @Override
-    public void update(GameContainer gc, int delta) throws SlickException {
+    public void update(GameContainer gameContainer, int i) throws SlickException {
         for (Actor actor : this.actors) {
-            actor.update(gc,delta);
+            actor.update(gameContainer, i);
         }
     }
 
