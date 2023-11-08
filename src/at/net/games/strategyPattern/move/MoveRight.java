@@ -11,6 +11,9 @@ public class MoveRight implements MoveStrategy{
 
     public void update(int delta) {
         this.x += delta * speed;
+        if(this.x > 700){
+            this.x = 0;
+        }
     }
 
     public float getX() {

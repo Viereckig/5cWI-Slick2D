@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class MyGame extends BasicGame {
     private ArrayList<Actor> actors;
+    private Player player;
+
     public MyGame(String title) {
         super(title);
     }
@@ -17,14 +19,22 @@ public class MyGame extends BasicGame {
     public void init(GameContainer gameContainer) throws SlickException {
         this.actors = new ArrayList<>();
 
+        this.player = new Player();
+
+
         MoveStrategy ms1 = new MoveRight(0,0,0.3f);
         MoveStrategy ms2 = new MoveLeft(300,0,0.1f);
 
         Circle c1 = new Circle(ms1);
         Circle c2 = new Circle(ms2);
-
         this.actors.add(c1);
         this.actors.add(c2);
+
+        this.player.addActor(c1);
+        this.player.addActor(c2);
+
+
+
     }
 
     @Override
@@ -32,6 +42,8 @@ public class MyGame extends BasicGame {
         for (Actor actor : this.actors) {
             actor.update(gameContainer, i);
         }
+
+        this.player.update(gameContainer, i);
     }
 
     @Override
@@ -39,6 +51,7 @@ public class MyGame extends BasicGame {
         for (Actor actor : this.actors) {
             actor.render(graphics);
         }
+        this.player.render(graphics);
     }
 
     public static void main(String[] args) {

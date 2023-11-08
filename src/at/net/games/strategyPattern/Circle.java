@@ -6,7 +6,9 @@ import org.newdawn.slick.*;
 
 
 
-public class Circle extends AbstractActor{
+public class Circle extends AbstractActor implements Observer{
+    private Color color;
+
 
     public Circle(MoveStrategy moveStrategy) {
         super(moveStrategy);
@@ -14,7 +16,18 @@ public class Circle extends AbstractActor{
 
     @Override
     public void render(Graphics graphics) {
-        graphics.drawOval(this.moveStrategy.getX(), this.moveStrategy.getY(), 50,50);
+        graphics.setColor(this.color);
+        graphics.fillOval(this.moveStrategy.getX(), this.moveStrategy.getY(), 50,50);
+        graphics.setColor(Color.white);
+    }
+
+    public void inform(){
+
+        if(color == Color.red) {
+            this.color = Color.green;
+        }else{
+            this.color = Color.red;
+        }
     }
 
 }
