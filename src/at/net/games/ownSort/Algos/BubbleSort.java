@@ -1,6 +1,6 @@
-package at.net.games.observers.ownSort.Algos;
+package at.net.games.ownSort.Algos;
 
-import at.net.games.observers.ownSort.Algo;
+import at.net.games.ownSort.Algo;
 
 public class BubbleSort implements Algo {
     @Override

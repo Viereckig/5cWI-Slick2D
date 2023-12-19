@@ -1,8 +1,6 @@
-package at.net.games.observers.ownSort.Algos;
+package at.net.games.ownSort.Algos;
 
-import at.net.games.observers.ownSort.Algo;
-
-import java.util.Arrays;
+import at.net.games.ownSort.Algo;
 
 public class SelectionSort implements Algo {
 

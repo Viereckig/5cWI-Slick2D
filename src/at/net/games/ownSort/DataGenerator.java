@@ -1,4 +1,4 @@
-package at.net.games.observers.ownSort;
+package at.net.games.ownSort;
 
 public class DataGenerator {
     public static int[] generate(int size) {

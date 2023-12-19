@@ -1,8 +1,8 @@
-package at.net.games.observers.ownSort;
+package at.net.games.ownSort;
 
-import at.net.games.observers.ownSort.Algos.BubbleSort;
-import at.net.games.observers.ownSort.Algos.InsertionSort;
-import at.net.games.observers.ownSort.Algos.SelectionSort;
+import at.net.games.ownSort.Algos.BubbleSort;
+import at.net.games.ownSort.Algos.InsertionSort;
+import at.net.games.ownSort.Algos.SelectionSort;
 
 import java.util.ArrayList;
 import java.util.Scanner;
